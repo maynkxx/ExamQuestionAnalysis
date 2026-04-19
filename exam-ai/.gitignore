@@ -1,7 +1,10 @@
 venv/
+venv312/
 __pycache__/
 *.pyc
-# models/*.pkl
 data/*.csv
 .DS_Store
 .env
+chroma_db/
+*.egg-info/
+.pytest_cache/
