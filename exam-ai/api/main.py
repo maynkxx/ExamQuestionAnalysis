@@ -1,6 +1,9 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+import os
 
 from api.routes.analyze import router as analyze_router
 from api.routes.chat import router as chat_router
@@ -40,19 +43,17 @@ app.add_middleware(
 app.include_router(analyze_router, tags=["Analysis"])
 app.include_router(chat_router, tags=["Chat"])
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+WEB_DIR = os.path.join(BASE_DIR, "web")
+if os.path.isdir(WEB_DIR):
+    app.mount("/web", StaticFiles(directory=WEB_DIR), name="web")
 
 @app.get("/", tags=["Health"])
 async def root():
-    return {
-        "service": "ExamAI",
-        "version": "2.0.0",
-        "status": "running",
-        "endpoints": {
-            "analyze": "POST /analyze — upload a CSV, get full AI-powered assessment report",
-            "chat": "POST /chat — ask anything about assessment design (streaming)",
-            "docs": "GET /docs — interactive API documentation",
-        },
-    }
+    index_path = os.path.join(WEB_DIR, "index.html")
+    if os.path.isfile(index_path):
+        return FileResponse(index_path)
+    return {"service": "ExamAI", "version": "2.0.0", "status": "running"}
 
 
 @app.get("/health", tags=["Health"])

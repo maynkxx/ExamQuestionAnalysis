@@ -1,23 +1,18 @@
 .DS_Store
 
-# Python virtual environments
 venv/
 venv312/
 .venv/
 env/
 
-# Python cache / build artifacts
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 
-# Local config
 .env
 
-# Local vector DB / generated data
 chroma_db/
 data/*.csv
 
-# Local samples (keep repo clean)
 stacksample/

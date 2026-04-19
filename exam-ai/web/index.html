@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ExamAI</title>
+    <link rel="stylesheet" href="/web/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <div class="title">ExamAI</div>
+          <div class="subtitle">Analyze exam CSVs and chat with the agent</div>
+        </div>
+        <div class="header-actions">
+          <a class="link" href="/docs" target="_blank" rel="noreferrer">API Docs</a>
+          <span id="health" class="pill">Checking…</span>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card">
+          <div class="card-title">Analyze CSV</div>
+          <div class="card-body">
+            <label class="label" for="csvFile">CSV file</label>
+            <input id="csvFile" type="file" accept=".csv,text/csv" />
+            <div class="row">
+              <button id="analyzeBtn" class="btn primary">Analyze</button>
+              <button id="clearAnalyzeBtn" class="btn">Clear</button>
+            </div>
+            <div class="hint">Required columns: <span class="mono">question</span>, <span class="mono">student_id</span>, <span class="mono">marks</span></div>
+            <pre id="analyzeOutput" class="output"></pre>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-title">Chat</div>
+          <div class="card-body">
+            <label class="label" for="chatInput">Message</label>
+            <textarea id="chatInput" rows="5" placeholder="Ask ExamAI about assessment design…"></textarea>
+            <div class="row">
+              <button id="chatBtn" class="btn primary">Send</button>
+              <button id="stopChatBtn" class="btn danger" disabled>Stop</button>
+              <button id="clearChatBtn" class="btn">Clear</button>
+            </div>
+            <pre id="chatOutput" class="output"></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/web/app.js"></script>
+  </body>
+</html>
