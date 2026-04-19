@@ -4,9 +4,11 @@ python-multipart==0.0.20
 pydantic==2.11.3
 python-dotenv==1.1.0
 
-langchain==0.3.24
-langchain-core==0.3.56
-langchain-google-genai==2.1.4
+# Synchronized AI stack for stability
+langchain==0.3.7
+langchain-core==0.3.15
+langchain-google-genai==2.0.6
+google-generativeai==0.8.3
 langgraph==0.3.31
 
 chromadb==0.6.3

@@ -1,6 +1,14 @@
 import json
 from typing import AsyncGenerator, TypedDict, Annotated
 import operator
+import google.generativeai as genai
+
+# Robustness patch for version mismatches
+if not hasattr(genai.GenerationConfig, "Modality"):
+    class MockModality:
+        TEXT = "TEXT"
+        IMAGE = "IMAGE"
+    genai.GenerationConfig.Modality = MockModality
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
