@@ -14,7 +14,7 @@ langgraph==0.3.31
 chromadb==0.6.3
 
 pandas==2.2.3
-numpy==2.2.4
+numpy==1.26.4
 scikit-learn==1.6.1
 joblib==1.4.2
 matplotlib==3.10.1
